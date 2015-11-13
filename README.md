@@ -30,9 +30,6 @@ Before using this toolkit, make sure that you have downloaded the Visual7W datas
 You can use our downloading script in ```datasets/[dataset-name]/download_dataset.sh``` 
 to fetch the database json to the local disk.
 
-In order to show how to use this toolkit, we have implemented two simple
-baseline models based on training set answer frequencies. 
-
 ### Telling QA
 
 We implement a most-frequent-answer (MFA) baseline in ```predict_baseline.py```.
@@ -40,7 +37,7 @@ For open-ended evaluation, we use the top-*k* most frequent training set answers
 as the predictions for all test questions. For multiple-choice evaluation, we select 
 the candidate answer with the highest training set frequency for each test question.
 
-In this demo, we perform open-ended evaluation on the *telling* QA tasks.
+In this demo, we perform open-ended evaluation for *telling* QA.
 To run the MFA baseline on the validation set, use the following command:
 
 ```
@@ -53,7 +50,7 @@ python predict_baseline.py --dataset visual7w-telling \
 
 It will generate a prediction file ```result_visual7w-telling_open.json``` in the ```results``` folder. Type ```python predict_baseline.py -h``` to learn more about the input arguments.
 
-The script below shows how to use the evaluation script ```evaluate.py``` to evaluate the performances of the open-ended predictions in the ```result_visual7w-telling_open.json``` file. Type ```python evaluate.py -h``` to learn more about the input arguments.
+The script below shows how to use the evaluation script ```evaluate.py``` to check the performances of the open-ended predictions in the ```result_visual7w-telling_open.json``` file. Type ```python evaluate.py -h``` to learn more about the input arguments.
 
 ```
 python evaluate.py --dataset visual7w-telling \
@@ -67,34 +64,47 @@ python evaluate.py --dataset visual7w-telling \
 You will see the similar results as below:
 
 ```
-2015-11-12 22:31:13,141 Evaluated on 28,020 QA pairs with top-100 predictions.
-2015-11-12 22:31:13,141 Overall accuracy = 0.371
-2015-11-12 22:31:13,142 Question type "what" accuracy = 0.380 (5053 / 13296)
-2015-11-12 22:31:13,142 Question type "where" accuracy = 0.099 (456 / 4590)
-2015-11-12 22:31:13,142 Question type "when" accuracy = 0.529 (667 / 1262)
-2015-11-12 22:31:13,142 Question type "who" accuracy = 0.375 (1079 / 2879)
-2015-11-12 22:31:13,142 Question type "why" accuracy = 0.051 (91 / 1782)
-2015-11-12 22:31:13,142 Question type "how" accuracy = 0.721 (3037 / 4211)
+2015-11-13 14:42:42,259 Evaluated on 28,020 QA pairs with top-100 predictions.
+2015-11-13 14:42:42,259 Overall accuracy = 0.371
+2015-11-13 14:42:42,259 Question type "what" accuracy = 0.380 (5057 / 13296)
+2015-11-13 14:42:42,259 Question type "who" accuracy = 0.378 (1087 / 2879)
+2015-11-13 14:42:42,259 Question type "when" accuracy = 0.529 (668 / 1262)
+2015-11-13 14:42:42,259 Question type "how" accuracy = 0.721 (3037 / 4211)
+2015-11-13 14:42:42,259 Question type "where" accuracy = 0.100 (459 / 4590)
+2015-11-13 14:42:42,259 Question type "why" accuracy = 0.051 (91 / 1782)
 ```
 
-<!--Similarly, we can test the most-frequent-answer baseline with multiple-choice evaluation.-->
+Change the ```mode``` parameter to ```mc``` when performing multiple-choice evaluation.
 
-<!--```-->
-<!--python predict_baseline.py --dataset visual7w-telling \-->
-<!--                           --mode mc \-->
-<!--                           --split val \-->
-<!--                           --result_path results-->
-<!--```-->
+### Pointing QA
 
-<!--We can still use ```evaluate.py``` to evaluate the performance.-->
+Similary we can use the toolkit to evaluate pointing QA. For demo purpose, we implement a very simple baseline, which picks a random answer out of the four multiple-choice candidates.
+You can run the baseline as follows. Please make sure that you have downloaded the dataset json before running the code.
 
-<!--```-->
-<!--python evaluate.py --dataset visual7w-telling \-->
-<!--                   --mode mc \-->
-<!--                   --split val \-->
-<!--                   --results results/result_visual7w-telling_mc.json-->
-<!--                   --verbose 1-->
-<!--```-->
+```
+python predict_baseline.py --dataset visual7w-pointing \
+                           --mode mc \
+                           --split val \
+                           --result_path results
+```
+
+You should expect something very close to chance performance (25%). Let's see if that is true.
+
+```
+python evaluate.py --dataset visual7w-pointing \
+                   --mode mc \
+                   --split val \
+                   --results results/result_visual7w-pointing_mc.json \
+                   --verbose 1
+```
+
+Here is what I got.
+
+```
+2015-11-13 14:45:56,363 Evaluated on 36,990 QA pairs with top-1 predictions.
+2015-11-13 14:45:56,363 Overall accuracy = 0.249
+2015-11-13 14:45:56,363 Question type "which" accuracy = 0.249 (9209 / 36990)
+```
 
 ### Evaluating Your Own Models
 
