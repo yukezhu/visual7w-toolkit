@@ -30,9 +30,6 @@ Before using this toolkit, make sure that you have downloaded the Visual7W datas
 You can use our downloading script in ```datasets/[dataset-name]/download_dataset.sh``` 
 to fetch the database json to the local disk.
 
-In order to show how to use this toolkit, we have implemented two simple
-baseline models based on training set answer frequencies. 
-
 ### Telling QA
 
 We implement a most-frequent-answer (MFA) baseline in ```predict_baseline.py```.
@@ -77,24 +74,24 @@ You will see the similar results as below:
 2015-11-12 22:31:13,142 Question type "how" accuracy = 0.721 (3037 / 4211)
 ```
 
-<!--Similarly, we can test the most-frequent-answer baseline with multiple-choice evaluation.-->
+Similarly, we can perform multiple-choice evaluation on the MFA baseline.
 
-<!--```-->
-<!--python predict_baseline.py --dataset visual7w-telling \-->
-<!--                           --mode mc \-->
-<!--                           --split val \-->
-<!--                           --result_path results-->
-<!--```-->
+```
+python predict_baseline.py --dataset visual7w-telling \
+                           --mode mc \
+                           --split val \
+                           --result_path results
+```
 
-<!--We can still use ```evaluate.py``` to evaluate the performance.-->
+In this case, we can still use ```evaluate.py``` to evaluate the performance.
 
-<!--```-->
-<!--python evaluate.py --dataset visual7w-telling \-->
-<!--                   --mode mc \-->
-<!--                   --split val \-->
-<!--                   --results results/result_visual7w-telling_mc.json-->
-<!--                   --verbose 1-->
-<!--```-->
+```
+python evaluate.py --dataset visual7w-telling \
+                   --mode mc \
+                   --split val \
+                   --results results/result_visual7w-telling_mc.json
+                   --verbose 1
+```
 
 ### Evaluating Your Own Models
 
