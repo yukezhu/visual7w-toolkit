@@ -19,7 +19,7 @@ def main_freefrom_most_frequent_answers(params):
   split = params['split']
   
   # fetch the data provider
-  dp = getDataProvider(dataset, load_features = False)
+  dp = getDataProvider(dataset)
 
   # initialize
   blob = []
@@ -64,7 +64,7 @@ def main_multiple_choice_random_guess(params):
   split = params['split']
   
   # fetch the data provider
-  dp = getDataProvider(dataset, load_features=False)
+  dp = getDataProvider(dataset)
   
   # initialize
   blob = []
@@ -101,7 +101,7 @@ def main_multiple_choice_most_frequent(params):
   split = params['split']
   
   # fetch the data provider
-  dp = getDataProvider(dataset, load_features=False)
+  dp = getDataProvider(dataset)
   
   # count answer frequencies
   answer_freqs = dict()
@@ -143,10 +143,10 @@ def main_multiple_choice_most_frequent(params):
 if __name__ == "__main__":
 
   parser = argparse.ArgumentParser()
-  parser.add_argument('-d', '--dataset', type=str, default='visual6w', help='dataset name (default: visual6w).')
+  parser.add_argument('-d', '--dataset', type=str, default='visual7w-telling', help='dataset name (default: visual7w-telling).')
   parser.add_argument('-r', '--result_path', default='results', type=str, help='folder to store prediction results (default: results)')
   parser.add_argument('-m', '--mode', type=str, default='open', help='prediction mode: open / mc (default: open)')
-  parser.add_argument('-k', '--topk', type=int, default=5, help='only used for open-ended QAs. use the top k most frequent answers as the predictions (default: 5)')
+  parser.add_argument('-k', '--topk', type=int, default=5, help='only used for open-ended evaluation. use the top k most frequent answers as the predictions (default: 5)')
   parser.add_argument('-s', '--split', type=str, default='val', help='the split to be evaluated: train / val / test (default: val)')
 
   args = parser.parse_args()
@@ -159,5 +159,6 @@ if __name__ == "__main__":
     main_freefrom_most_frequent_answers(params)
   elif params['mode'] == 'mc': # select from multiple choices
     main_multiple_choice_most_frequent(params)
+    # main_multiple_choice_random_guess(params)
   else:
     print 'Error: unsupported evaluation mode "%s"' % params['mode']
