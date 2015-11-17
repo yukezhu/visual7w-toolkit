@@ -64,14 +64,14 @@ python evaluate.py --dataset visual7w-telling \
 You will see the similar results as below:
 
 ```
-2015-11-13 14:42:42,259 Evaluated on 28,020 QA pairs with top-100 predictions.
-2015-11-13 14:42:42,259 Overall accuracy = 0.371
-2015-11-13 14:42:42,259 Question type "what" accuracy = 0.380 (5057 / 13296)
-2015-11-13 14:42:42,259 Question type "who" accuracy = 0.378 (1087 / 2879)
-2015-11-13 14:42:42,259 Question type "when" accuracy = 0.529 (668 / 1262)
-2015-11-13 14:42:42,259 Question type "how" accuracy = 0.721 (3037 / 4211)
-2015-11-13 14:42:42,259 Question type "where" accuracy = 0.100 (459 / 4590)
-2015-11-13 14:42:42,259 Question type "why" accuracy = 0.051 (91 / 1782)
+2015-11-16 19:18:48,834 Evaluated on 28,020 QA pairs with top-100 predictions.
+2015-11-16 19:18:48,834 Overall accuracy = 0.370
+2015-11-16 19:18:48,835 Question type "what" accuracy = 0.377 (5011 / 13296)
+2015-11-16 19:18:48,835 Question type "who" accuracy = 0.377 (1086 / 2879)
+2015-11-16 19:18:48,835 Question type "when" accuracy = 0.529 (668 / 1262)
+2015-11-16 19:18:48,835 Question type "how" accuracy = 0.726 (3056 / 4211)
+2015-11-16 19:18:48,835 Question type "where" accuracy = 0.100 (459 / 4590)
+2015-11-16 19:18:48,835 Question type "why" accuracy = 0.051 (91 / 1782)
 ```
 
 Change the ```mode``` parameter to ```mc``` when performing multiple-choice evaluation.
