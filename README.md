@@ -77,7 +77,13 @@ You will see the similar results as below:
 Similarly, we can perform multiple-choice evaluation on the MFA baseline.
 
 ```
-python predict_baseline.py --dataset visual7w-telling \
+python evaluate.py --dataset visual7w-telling \
+                   --mode mc \
+                   --topk 100 \
+                   --split val \
+                   --results results/result_visual7w-telling_open.json \
+                   --verbose 1
+```                   
 Change the ```mode``` parameter to ```mc``` when performing multiple-choice evaluation.
 
 ### Pointing QA
