@@ -102,3 +102,16 @@ For multiple-choice QA, the ```candidates``` arrays contain only one element, wh
 the selected multiple-choice option. For open-ended QA, the ```candidates``` arrays can 
 contain more than one (up to *k*) predictions, where we use the one-of-*k* metric to 
 evaluate the performance.
+
+More specifically the result format reads:
+```
+[
+	{
+		"candidates":[
+			"answer":<answer-id for pointing QAs> OR <answer-string for telling QAs>
+		],
+		"question":<question-string>,
+		"qa_id":<qa-id>
+	}
+]
+```

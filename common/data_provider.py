@@ -139,5 +139,5 @@ class BasicDataProvider:
 
 def getDataProvider(dataset, **kwargs):
   """ we could intercept a special dataset and return different data providers """
-  assert dataset in ['visual7w-telling'], 'dataset %s unknown' % (dataset, )
+  assert dataset in ['visual7w-telling','visual7w-pointing'], 'dataset %s unknown' % (dataset, )
   return BasicDataProvider(dataset, **kwargs)
