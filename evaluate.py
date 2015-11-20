@@ -109,7 +109,13 @@ if __name__ == '__main__':
   dp = getDataProvider(params['dataset'])
   
   # start evaluation mode
-  if params['mode'] in ['mc', 'open']:
+  if params['dataset'].endswith('telling'):
+    # multiple-choice and open-ended evaluations are supported in telling QA
+    assert params['mode'] in ['mc', 'open'], 'Evaluation mode %s not supported in telling QA.' % params['mode']
+    evaluate_top_k(dp, params)
+  elif params['dataset'].endswith('pointing'):
+    # only multiple-choice evaluation is supported in pointing QA
+    assert params['mode'] in ['mc'], 'Evaluation mode %s not supported in pointing QA.' % params['mode']
     evaluate_top_k(dp, params)
   else:
     logging.error('Error: evaluation mode "%s" is not supported.' % params['mode'])

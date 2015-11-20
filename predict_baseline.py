@@ -155,10 +155,17 @@ if __name__ == "__main__":
   print 'parsed parameters:'
   print json.dumps(params, indent = 2)
   
-  if params['mode'] == 'open': # generate open-ended answers
-    main_freefrom_most_frequent_answers(params)
-  elif params['mode'] == 'mc': # select from multiple choices
-    main_multiple_choice_most_frequent(params)
-    # main_multiple_choice_random_guess(params)
+  # start evaluation mode
+  if params['dataset'].endswith('telling'):
+    # multiple-choice and open-ended evaluations are supported in telling QA
+    assert params['mode'] in ['mc', 'open'], 'Evaluation mode %s not supported in telling QA.' % params['mode']
+    if params['mode'] == 'mc':
+      main_multiple_choice_most_frequent(params)
+    elif params['mode'] == 'open':
+      main_freefrom_most_frequent_answers(params)
+  elif params['dataset'].endswith('pointing'):
+    # only multiple-choice evaluation is supported in pointing QA
+    assert params['mode'] in ['mc'], 'Evaluation mode %s not supported in pointing QA.' % params['mode']
+    main_multiple_choice_random_guess(params)
   else:
     print 'Error: unsupported evaluation mode "%s"' % params['mode']

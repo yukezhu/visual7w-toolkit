@@ -21,6 +21,13 @@ class BasicDataProvider:
     for img in self.dataset['images']:
       self.split[img['split']].append(img)
 
+    # load anwer boxes when available (for pointing QA)
+    if 'boxes' in self.dataset:
+      # load object bounding boxes
+      self.grounding_boxes = dict()
+      for box in self.dataset['boxes']:
+        self.grounding_boxes[box['box_id']] = box
+
   # "PRIVATE" FUNCTIONS
   # in future we may want to create copies here so that we don't touch the 
   # data provider class data, but for now lets do the simple thing and 
@@ -34,6 +41,10 @@ class BasicDataProvider:
   def _getQAPair(self, qa_pair):
     """ create a QA pair structure """
     return qa_pair
+    
+  def _getGroundingBox(self, box_id):
+    """ create an answer box structure """
+    return self.grounding_boxes[box_id]
   
   def _getQAMultipleChoice(self, qa_pair, shuffle = False):
     """ create a QA multiple choice structure """
@@ -136,8 +147,18 @@ class BasicDataProvider:
       ix = ix[:min(len(ix), max_images)] # crop the list
     for i in ix:
       yield self._getImage(imglist[i])
+  
+  def iterGroundingBoxes(self, shuffle = False, max_boxes = -1):
+    if hasattr(self, 'grounding_boxes'):
+      ix = self.grounding_boxes.keys()
+      if shuffle:
+        random.shuffle(ix)
+      if max_boxes > 0:
+        ix = ix[:min(len(ix), max_boxes)]
+      for i in ix:
+        yield self._getGroundingBox(i)
 
 def getDataProvider(dataset, **kwargs):
   """ we could intercept a special dataset and return different data providers """
-  assert dataset in ['visual7w-telling','visual7w-pointing'], 'dataset %s unknown' % (dataset, )
+  assert dataset in ['visual7w-telling', 'visual7w-pointing'], 'dataset %s unknown' % (dataset, )
   return BasicDataProvider(dataset, **kwargs)
