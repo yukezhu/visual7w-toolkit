@@ -6,7 +6,7 @@
 
 [Visual7W](http://web.stanford.edu/~yukez/visual7w.html) is a large-scale visual question answering (QA) dataset, with object-level groundings and multimodal answers.
 Each question starts with one of the seven Ws, *what*, *where*, *when*, *who*, *why*, *how* and *which*.
-Please check out [our arxiv paper](http://web.stanford.edu/~yukez/papers/visual7w_arxiv.pdf) for more details.
+Please check out [our CVPR'16 paper](http://web.stanford.edu/~yukez/papers/cvpr2016.pdf) for more details.
 This toolkit is used for parsing dataset files and evaluating model performances.
 Please contact [Yuke Zhu](http://web.stanford.edu/~yukez/) for questions, comments, or bug reports.
 
