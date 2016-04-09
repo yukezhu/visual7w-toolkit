@@ -12,9 +12,11 @@ Please contact [Yuke Zhu](http://web.stanford.edu/~yukez/) for questions, commen
 
 ## Dataset Overview
 
-The Visual7W dataset is collected on 47,300 COCO images. In total, it has 327,939 QA pairs, together with 1,311,756 human-generated multiple-choices and 561,459 object groundings from 36,579 categories. In addition, we provide complete grounding annotations that link the object mentions in the QA sentences to their bounding boxes in the images and therefore
+The [Visual7W](http://web.stanford.edu/~yukez/visual7w/) dataset is collected on 47,300 COCO images. In total, it has 327,939 QA pairs, together with 1,311,756 human-generated multiple-choices and 561,459 object groundings from 36,579 categories. In addition, we provide complete grounding annotations that link the object mentions in the QA sentences to their bounding boxes in the images and therefore
 introduce a new QA type with image regions as the visually grounded answers. We refer to questions with textual answers
 as *telling* QA and to such with visual answers as *pointing* QA. The figure above shows some examples in the Visual7W dataset, where the first row shows *telling* QA examples, and the second row shows *pointing* QA examples.
+
+[Visual7W](http://web.stanford.edu/~yukez/visual7w/) constitutes a part of the [Visual Genome](http://visualgenome.org/) project. Visual Genome contains 1.7 million QA pairs of the 7W question types, which offers the largest visual QA collection to date for training models. The QA pairs in [Visual7W](http://web.stanford.edu/~yukez/visual7w/) are a subset of the 1.7 million QA pairs from Visual Genome. Moreover, [Visual7W](http://web.stanford.edu/~yukez/visual7w/) includes extra annotations such as object groundings, multiple choices and human experiments, making it a clean and complete benchmark for evaluation and analysis.
 
 ## Evaluation Methods
 
@@ -137,4 +139,15 @@ More specifically the result format reads:
 		"qa_id":<qa-id>
 	}
 ]
+```
+
+## Reference
+Please acknowledge the our CVPR'16 paper if you are using this code.
+```
+@InProceedings{zhu2016cvpr,
+  title = {{Visual7W: Grounded Question Answering in Images}},
+  author = {Yuke Zhu and Oliver Groth and Michael Bernstein and Li Fei-Fei},
+  booktitle = {{IEEE Conference on Computer Vision and Pattern Recognition}},
+  year = 2016,
+}
 ```
