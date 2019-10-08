@@ -2,7 +2,7 @@
 
 V7W_DB_NAME=v7w_telling
 
-V7W_URL="http://web.stanford.edu/~yukez/papers/resources/dataset_${V7W_DB_NAME}.zip"
+V7W_URL="http://ai.stanford.edu/~yukez/papers/resources/dataset_${V7W_DB_NAME}.zip"
 V7W_PATH="dataset_${V7W_DB_NAME}.json"
 
 if [ -f "dataset.json" ]; then

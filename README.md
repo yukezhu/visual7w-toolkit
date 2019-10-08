@@ -1,22 +1,22 @@
 # Visual7W Toolkit
 
-![alt text](http://web.stanford.edu/~yukez/images/img/visual7w_examples.png "Visual7W example QAs")
+![alt text](http://ai.stanford.edu/~yukez/images/img/visual7w_examples.png "Visual7W example QAs")
 
 ## Introduction
 
-[Visual7W](http://web.stanford.edu/~yukez/visual7w/) is a large-scale visual question answering (QA) dataset, with object-level groundings and multimodal answers.
+[Visual7W](http://ai.stanford.edu/~yukez/visual7w/) is a large-scale visual question answering (QA) dataset, with object-level groundings and multimodal answers.
 Each question starts with one of the seven Ws, *what*, *where*, *when*, *who*, *why*, *how* and *which*.
-Please check out [our CVPR'16 paper](http://web.stanford.edu/~yukez/papers/cvpr2016.pdf) for more details.
+Please check out [our CVPR'16 paper](http://ai.stanford.edu/~yukez/papers/cvpr2016.pdf) for more details.
 This toolkit is used for parsing dataset files and evaluating model performances.
-Please contact [Yuke Zhu](http://web.stanford.edu/~yukez/) for questions, comments, or bug reports.
+Please contact [Yuke Zhu](http://ai.stanford.edu/~yukez/) for questions, comments, or bug reports.
 
 ## Dataset Overview
 
-The [Visual7W](http://web.stanford.edu/~yukez/visual7w/) dataset is collected on 47,300 COCO images. In total, it has 327,939 QA pairs, together with 1,311,756 human-generated multiple-choices and 561,459 object groundings from 36,579 categories. In addition, we provide complete grounding annotations that link the object mentions in the QA sentences to their bounding boxes in the images and therefore
+The [Visual7W](http://ai.stanford.edu/~yukez/visual7w/) dataset is collected on 47,300 COCO images. In total, it has 327,939 QA pairs, together with 1,311,756 human-generated multiple-choices and 561,459 object groundings from 36,579 categories. In addition, we provide complete grounding annotations that link the object mentions in the QA sentences to their bounding boxes in the images and therefore
 introduce a new QA type with image regions as the visually grounded answers. We refer to questions with textual answers
 as *telling* QA and to such with visual answers as *pointing* QA. The figure above shows some examples in the Visual7W dataset, where the first row shows *telling* QA examples, and the second row shows *pointing* QA examples.
 
-[Visual7W](http://web.stanford.edu/~yukez/visual7w/) constitutes a part of the [Visual Genome](http://visualgenome.org/) project. Visual Genome contains 1.7 million QA pairs of the 7W question types, which offers the largest visual QA collection to date for training models. The QA pairs in [Visual7W](http://web.stanford.edu/~yukez/visual7w/) are a subset of the 1.7 million QA pairs from Visual Genome. Moreover, [Visual7W](http://web.stanford.edu/~yukez/visual7w/) includes extra annotations such as object groundings, multiple choices and human experiments, making it a clean and complete benchmark for evaluation and analysis.
+[Visual7W](http://ai.stanford.edu/~yukez/visual7w/) constitutes a part of the [Visual Genome](http://visualgenome.org/) project. Visual Genome contains 1.7 million QA pairs of the 7W question types, which offers the largest visual QA collection to date for training models. The QA pairs in [Visual7W](http://ai.stanford.edu/~yukez/visual7w/) are a subset of the 1.7 million QA pairs from Visual Genome. Moreover, [Visual7W](http://ai.stanford.edu/~yukez/visual7w/) includes extra annotations such as object groundings, multiple choices and human experiments, making it a clean and complete benchmark for evaluation and analysis.
 
 ## Evaluation Methods
 
